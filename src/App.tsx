@@ -46,6 +46,7 @@ import { QuestionBox } from './components/QuestionBox';
 import { TransactionHistoryTable } from './components/TransactionHistoryTable';
 import { PresentationModal } from './components/PresentationModal';
 import { DataHealthModal } from './components/DataHealthModal';
+import { Analytics } from '@vercel/analytics/react';
 
 // Initialize default dataset using Nigerian Dataset A: Jumia/Konga Sales
 const INITIAL_DEFAULT_RECORDS: SalesRecord[] = generateJumiaKongaSales().map((r, i) => {
@@ -967,6 +968,7 @@ export default function App() {
           setPendingDataset(null);
         }}
       />
+      <Analytics />
     </div>
   );
 }
