@@ -1,0 +1,6 @@
+{
+  "name": "Vizr",
+  "description": "Interactive data visualization dashboard with dynamic chart types (bar, line, pie, area, donut, radar) and multi-dimensional analytics for apparel orders.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

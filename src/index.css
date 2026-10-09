@@ -1,0 +1,409 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-great-vibes: 'Great Vibes', cursive;
+}
+
+html {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #ebf1f9;
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html.dark {
+  background-color: #020617;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f8fafc;
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark body {
+  background-color: #020617;
+}
+
+/* Global smooth theme surface transitions without impacting layout, scaling or scroll virtualization */
+header,
+main,
+footer,
+.theme-surface,
+.bg-white,
+.dark\:bg-slate-900,
+.bg-slate-50,
+.dark\:bg-slate-950,
+.bg-slate-100,
+.dark\:bg-slate-800,
+.border-slate-200,
+.dark\:border-slate-800,
+.border-slate-100,
+.border-slate-700,
+.text-slate-900,
+.dark\:text-white,
+.text-slate-700,
+.dark\:text-slate-200,
+.text-slate-600,
+.dark\:text-slate-300,
+.text-slate-500,
+.dark\:text-slate-400 {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0.25s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Dashboard page: scaled down by 15% from what it originally was (100% -> 85%) */
+html.dashboard-active {
+  zoom: 0.85;
+  min-height: calc(100vh / 0.85);
+  min-height: calc(100dvh / 0.85);
+}
+
+body.dashboard-active {
+  min-height: calc(100vh / 0.85);
+  min-height: calc(100dvh / 0.85);
+}
+
+html.dashboard-active #root,
+html.dashboard-active .min-h-screen {
+  min-height: calc(100vh / 0.85);
+  min-height: calc(100dvh / 0.85);
+}
+
+:root {
+  --landing-aura-1: rgba(37, 99, 235, 0.15);
+  --landing-aura-2: rgba(79, 70, 229, 0.15);
+  --landing-aura-3: rgba(124, 58, 237, 0.14);
+  --landing-aura-4: rgba(2, 132, 199, 0.15);
+}
+
+html.dark {
+  --landing-aura-1: rgba(37, 99, 235, 0.12);
+  --landing-aura-2: rgba(79, 70, 229, 0.12);
+  --landing-aura-3: rgba(124, 58, 237, 0.11);
+  --landing-aura-4: rgba(2, 132, 199, 0.11);
+}
+
+/* Landing page: scaled down by 25% from what it originally was (100% -> 75%) */
+html.landing-active {
+  zoom: 0.75;
+  min-height: calc(100vh / 0.75);
+  min-height: calc(100dvh / 0.75);
+  height: calc(100vh / 0.75);
+  height: calc(100dvh / 0.75);
+  background-color: #ebf1f9;
+  overflow-x: hidden;
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html.dark.landing-active {
+  background-color: #020617;
+}
+
+body.landing-active {
+  min-height: calc(100vh / 0.75);
+  min-height: calc(100dvh / 0.75);
+  height: calc(100vh / 0.75);
+  height: calc(100dvh / 0.75);
+  background-color: #ebf1f9;
+  overflow-x: hidden;
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark body.landing-active {
+  background-color: #020617;
+}
+
+html.landing-active #root,
+html.landing-active .min-h-screen,
+html.landing-active .landing-container {
+  min-height: calc(100vh / 0.75) !important;
+  min-height: calc(100dvh / 0.75) !important;
+  height: 100%;
+}
+
+.landing-container {
+  background-color: #ebf1f9;
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .landing-container {
+  background-color: #020617;
+}
+
+/* Landing page comprehensive smooth theme transitions matching dashboard quality */
+.landing-container,
+.landing-container header,
+.landing-container footer,
+.landing-container h1,
+.landing-container h2,
+.landing-container p,
+.landing-container span,
+.landing-container strong,
+.landing-container button,
+.landing-container div {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 0.25s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Exclude spinning/transform animations from theme transition overrides */
+.landing-container .compositor-spin,
+.landing-container .animate-spin {
+  transition-property: color;
+}
+
+.landing-container .landing-aura-sweeping,
+.landing-container .landing-aura-liquid-wave,
+.landing-container .landing-aura-orbit-1,
+.landing-container .landing-aura-orbit-2,
+.landing-container .landing-aura-orbit-3 {
+  transition-property: background-color, opacity;
+  transition-duration: 0.25s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.font-great-vibes {
+  font-family: 'Great Vibes', cursive;
+}
+
+/* Unified liquid glowing ambient aura (seamlessly persists through theme toggles) */
+@keyframes singleColorAura {
+  0%, 100% {
+    background-color: var(--landing-aura-1);
+  }
+  25% {
+    background-color: var(--landing-aura-2);
+  }
+  50% {
+    background-color: var(--landing-aura-3);
+  }
+  75% {
+    background-color: var(--landing-aura-4);
+  }
+}
+
+/* Organic fluid liquid motion animations moving smoothly and broadly across the background */
+@keyframes liquidOrbit1 {
+  0% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: translate(0vw, 0vh) scale(1, 0.96) rotate(0deg);
+  }
+  25% {
+    border-radius: 65% 35% 40% 60% / 35% 65% 35% 65%;
+    transform: translate(26vw, 18vh) scale(1.12, 0.9) rotate(85deg) skew(-2deg, 2deg);
+  }
+  50% {
+    border-radius: 35% 65% 60% 40% / 60% 35% 65% 40%;
+    transform: translate(12vw, 38vh) scale(0.92, 1.1) rotate(180deg) skew(2deg, -1deg);
+  }
+  75% {
+    border-radius: 58% 42% 35% 65% / 40% 60% 40% 60%;
+    transform: translate(-14vw, 20vh) scale(1.08, 0.94) rotate(275deg) skew(-1deg, 2deg);
+  }
+  100% {
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: translate(0vw, 0vh) scale(1, 0.96) rotate(360deg);
+  }
+}
+
+@keyframes liquidOrbit2 {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: translate(0vw, 0vh) scale(0.95, 1.05) rotate(0deg);
+  }
+  25% {
+    border-radius: 35% 65% 65% 35% / 45% 55% 45% 55%;
+    transform: translate(-28vw, 20vh) scale(1.1, 0.92) rotate(-85deg) skew(2deg, -2deg);
+  }
+  50% {
+    border-radius: 70% 30% 40% 60% / 65% 35% 65% 35%;
+    transform: translate(-34vw, -16vh) scale(0.9, 1.12) rotate(-180deg) skew(-2deg, 2deg);
+  }
+  75% {
+    border-radius: 40% 60% 55% 45% / 30% 70% 30% 70%;
+    transform: translate(-10vw, -25vh) scale(1.08, 0.94) rotate(-275deg) skew(1deg, -2deg);
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: translate(0vw, 0vh) scale(0.95, 1.05) rotate(-360deg);
+  }
+}
+
+@keyframes liquidOrbit3 {
+  0% {
+    border-radius: 50% 50% 35% 65% / 55% 45% 55% 45%;
+    transform: translate(0vw, 0vh) scale(1.04, 0.96) rotate(0deg);
+  }
+  25% {
+    border-radius: 68% 32% 60% 40% / 38% 62% 38% 62%;
+    transform: translate(30vw, -22vh) scale(0.92, 1.1) rotate(90deg) skew(2deg, 1deg);
+  }
+  50% {
+    border-radius: 35% 65% 42% 58% / 65% 35% 65% 35%;
+    transform: translate(16vw, -42vh) scale(1.12, 0.9) rotate(180deg) skew(-2deg, -2deg);
+  }
+  75% {
+    border-radius: 55% 45% 65% 35% / 45% 55% 45% 55%;
+    transform: translate(-18vw, -18vh) scale(0.94, 1.08) rotate(270deg) skew(1deg, 2deg);
+  }
+  100% {
+    border-radius: 50% 50% 35% 65% / 55% 45% 55% 45%;
+    transform: translate(0vw, 0vh) scale(1.04, 0.96) rotate(360deg);
+  }
+}
+
+/* Wide sweeping liquid gradient body with fluid surface tension breathing across screen */
+@keyframes liquidSweeping {
+  0% {
+    border-radius: 58% 42% 48% 52% / 52% 48% 52% 48%;
+    transform: translate(calc(-50% - 16vw), calc(-50% - 12vh)) scale(1.08, 0.94) rotate(0deg);
+  }
+  25% {
+    border-radius: 46% 54% 60% 40% / 58% 42% 58% 42%;
+    transform: translate(calc(-50% + 15vw), calc(-50% - 10vh)) scale(0.94, 1.1) rotate(90deg) skew(2deg, -1deg);
+  }
+  50% {
+    border-radius: 64% 36% 42% 58% / 40% 60% 40% 60%;
+    transform: translate(calc(-50% + 14vw), calc(-50% + 15vh)) scale(1.1, 0.92) rotate(180deg) skew(-1deg, 2deg);
+  }
+  75% {
+    border-radius: 40% 60% 55% 45% / 62% 38% 62% 38%;
+    transform: translate(calc(-50% - 15vw), calc(-50% + 12vh)) scale(0.94, 1.08) rotate(270deg) skew(-2deg, -1deg);
+  }
+  100% {
+    border-radius: 58% 42% 48% 52% / 52% 48% 52% 48%;
+    transform: translate(calc(-50% - 16vw), calc(-50% - 12vh)) scale(1.08, 0.94) rotate(360deg);
+  }
+}
+
+/* Liquid undulating tide wave that washes across background seamlessly */
+@keyframes liquidWave {
+  0% {
+    border-radius: 52% 48% 63% 37% / 40% 58% 42% 60%;
+    transform: translate(calc(-50% + 14vw), calc(-50% - 14vh)) scale(1) rotate(0deg);
+  }
+  25% {
+    border-radius: 38% 62% 44% 56% / 60% 38% 62% 40%;
+    transform: translate(calc(-50% - 14vw), calc(-50% - 12vh)) scale(1.12, 0.9) rotate(-90deg) skew(-2deg, 1deg);
+  }
+  50% {
+    border-radius: 56% 44% 38% 62% / 45% 55% 45% 55%;
+    transform: translate(calc(-50% - 16vw), calc(-50% + 14vh)) scale(0.92, 1.12) rotate(-180deg) skew(2deg, -2deg);
+  }
+  75% {
+    border-radius: 42% 58% 58% 42% / 55% 45% 55% 45%;
+    transform: translate(calc(-50% + 12vw), calc(-50% + 15vh)) scale(1.1, 0.92) rotate(-270deg) skew(-1deg, 2deg);
+  }
+  100% {
+    border-radius: 52% 48% 63% 37% / 40% 58% 42% 60%;
+    transform: translate(calc(-50% + 14vw), calc(-50% - 14vh)) scale(1) rotate(-360deg);
+  }
+}
+
+.landing-aura-orbit-1 {
+  will-change: transform, border-radius;
+  animation: liquidOrbit1 10s cubic-bezier(0.4, 0, 0.2, 1) infinite, singleColorAura 10s ease-in-out infinite;
+}
+
+.landing-aura-orbit-2 {
+  will-change: transform, border-radius;
+  animation: liquidOrbit2 10s cubic-bezier(0.4, 0, 0.2, 1) infinite, singleColorAura 10s ease-in-out infinite;
+}
+
+.landing-aura-orbit-3 {
+  will-change: transform, border-radius;
+  animation: liquidOrbit3 10s cubic-bezier(0.4, 0, 0.2, 1) infinite, singleColorAura 10s ease-in-out infinite;
+}
+
+.landing-aura-sweeping {
+  will-change: transform, border-radius;
+  animation: liquidSweeping 10s ease-in-out infinite, singleColorAura 10s ease-in-out infinite;
+}
+
+.landing-aura-liquid-wave {
+  will-change: transform, border-radius;
+  animation: liquidWave 10s ease-in-out infinite, singleColorAura 10s ease-in-out infinite;
+}
+
+/* Compositor-accelerated spinner that never freezes during CPU tasks */
+@keyframes continuousSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.compositor-spin {
+  display: inline-block;
+  will-change: transform;
+  transform: translateZ(0);
+  animation: continuousSpin 0.75s linear infinite !important;
+}
+
+/* Custom Sleek Scrollbar Styling for dynamic chart scrolling & dashboard components */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.05);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Firefox scrollbar support */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+.dark .custom-scrollbar {
+  scrollbar-color: #334155 transparent;
+}
